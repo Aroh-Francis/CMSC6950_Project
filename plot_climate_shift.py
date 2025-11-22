@@ -15,8 +15,8 @@ df_early = df[(df['Year'] >= 1942) & (df['Year'] <= 1962)]
 df_late = df[(df['Year'] >= 2002) & (df['Year'] <= 2022)]
 
 kwargs = {'kde': True,
-          'bins': 25,          
-          'stat': 'density',   
+          'bins': 25,
+          'stat': 'density',
           'edgecolor': 'none',
           'linewidth': 0.5,
           'alpha': 0.7,
@@ -37,8 +37,7 @@ sns.histplot(data=df_late,
              label='2002-2022 (Late)',
              **kwargs,
              ax=ax)
-
-ax.set_xlabel(r'Mean Monthly Temp ($^\circ$C)') 
+ax.set_xlabel(r'Mean Monthly Temp ($^\circ$C)')
 ax.set_ylabel('Density')
 ax.set_title("Climate Shift in St. John's A (Early vs. Late)")
 ax.legend()
