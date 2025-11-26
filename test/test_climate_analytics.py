@@ -2,7 +2,7 @@ import pytest
 import pandas as pd
 import numpy as np
 from pandas.testing import assert_frame_equal, assert_series_equal
-from climate_analytics import calculate_gdd #calculate_annual_gdd
+from climate_analytics import calculate_gdd, calculate_annual_gdd
 
 def test_calculate_gdd_basic():
     '''Tests the core GDD calculation, similar to tests in test_array_stats_pytest.py'''
@@ -33,6 +33,26 @@ def sample_climate_data():
     data = {
         'Year': [2000, 2000, 2000, 2001, 2001, 2001],
         'Month': [1, 2, 3, 1, 2, 3],
-        'Mean Temp (°C)': [8, 12, 20, 9, 11, 15] # GDDs (base 10): [0, 2, 10], [0, 1, 5]
+        'Mean Temp (°C)': [8, 12, 20, 9, 11, 15] 
     }
     return pd.DataFrame(data)
+
+def test_calculate_annual_gdd(sample_climate_data):
+    '''
+    This is an integration test for our main function.
+    
+    '''
+    base = 10 
+    expected_data = {
+        'Year': [2000, 2001],
+        'Total GDD': [12, 6]
+    }
+    expected_df = pd.DataFrame(expected_data)    
+    result_df = calculate_annual_gdd(sample_climate_data, base)    
+    assert_frame_equal(result_df, expected_df)
+
+def test_calculate_annual_gdd_missing_cols():
+    '''A function to test that the function raises an error for bad data'''
+    bad_df = pd.DataFrame({'Year': [2000], 'Not_Temp': [10]}) 
+    with pytest.raises(ValueError):
+        calculate_annual_gdd(bad_df, 10)
