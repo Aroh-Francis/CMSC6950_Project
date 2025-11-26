@@ -1,0 +1,32 @@
+4. Discussion of Trends in the Data
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. The Overwhelming Warming Trend in St John’s NL
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The most significant finding from my analysis is a clear and statistically significant warming trend at the St. John's A station since 1942. The station has gotten warmer over the years.
+
+I came to this conclusion not based on a single plot, but after multiple independent analyses and plots all point to the same result: St John’s A is indeed getting warmer.
+
+- Annual Mean Temperature Time Series (Plot 1): The line graph of annual mean temperature shows a clear upward slope over the 70-year period.
+- Distributional Shift (Plot 3): The Climate Shift histogram shows the entire distribution of monthly temperatures from 2002-2022 shifted to the right (warmer) compared to the 1942-1962 baseline. This demonstrates a fundamental shift in the climate profile at St John’s A station.
+- Mean Temperature Analysis (Plot 7): The 2x2 grid plot confirms warming across all four seasons (Winter, Spring, Summer, Fall).
+- Component Analysis (Plot 4): The multi-line plot of Mean Max Temp vs. Mean Min Temp shows both daily highs and lows increasing in parallel.
+- Impact on Extremes (Plots 8 and 9): A reversal in extreme events is observed. The first half of the record (1940s-1970s) was dominated by "Extreme Cold" months, while the second half (1980s-present) is dominated by "Extreme Hot" months. Cold extremes have vanished, hot extremes are now common.
+- Statistical Confirmation (Plot 10): The Growing Degree Days (GDD) analysis shows a persistent upward trend with a slope of +0.31 GDD units per year, meaning the total "heat available for growth" is measurably increasing.
+
+2. Precipitation: A Story of Variability (Lack of a Trend)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+In contrast to temperature, my analysis did not find a clear long-term trend in precipitation.
+
+- Seasonal Pattern (Plot 2): The bar chart of average monthly precipitation shows a wet climate with a winter maximum. This is a static characteristic, not a trend.
+- No Obvious Trend (Plots 6 and 9): Dual-axis plots (Temp vs. Snow and Rain vs. Snow) show annual totals for rain and snow are highly variable, with large year-to-year swings but no clear slope.
+- Lack of a Clear Trend: While the type of precipitation may be changing (more rain, less snow), the overall annual amount is dominated by variability, not a strong climate-driven trend.
+
+3. Statistical Tools and Methods Used
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+To identify these trends, I used the following methods:
+
+- Data Aggregation: groupby() on Year or Month with aggregate functions (.mean(), .sum()) to summarize raw monthly data into annual or seasonal statistics.
+- Percentile Analysis: quantile() function to establish a 30-year baseline for the 10th/90th and 5th/95th percentiles in extreme hot vs. cold months (baseline 1942-1971). Sensitivity analysis confirmed robustness.
+- Linear Regression: np.polyfit used in the GDD plot (Plot 10) to calculate a linear trend line, giving a slope of +0.31 GDD/year.
+- Modular Functions: Developed and tested a new function (calculate_annual_gdd) in climate_analytics.py and applied it to the dataset.
