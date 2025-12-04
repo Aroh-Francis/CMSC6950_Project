@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-import style 
+import style
 import os
 
 style.set_plot_style()
@@ -23,8 +22,8 @@ fig, ax = plt.subplots()
 
 color_temp = 'tab:red'
 ax.plot(
-    annual_data['Year'], 
-    annual_data['Mean Temp'], 
+    annual_data['Year'],
+    annual_data['Mean Temp'],
     color=color_temp,
     linestyle='-',
     marker='o',
@@ -38,8 +37,8 @@ ax.grid(False)
 ax2 = ax.twinx()
 color_snow = 'tab:blue'
 ax2.plot(
-    annual_data['Year'], 
-    annual_data['Total Snow'], 
+    annual_data['Year'],
+    annual_data['Total Snow'],
     color=color_snow,
     linestyle='--',
     marker='s',
